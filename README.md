@@ -9,4 +9,6 @@
 </div>
 
 
-You can add, delete, edit products and clients in this application!
+## You can add, delete, edit products and clients in this application!
+
+You have to modify database information! 
