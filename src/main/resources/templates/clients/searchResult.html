@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="layouts/layout :: html_head" />
+  <body class="bg-light">
+    <header th:replace="layouts/layout :: header"></header>
+
+    <div class="container mt-5">
+      <h1 class="text-center mb-4">Client Search Result</h1>
+
+      <div th:if="${client != null}" class="card p-4 shadow-sm">
+        <h2 class="text-success text-center">Client Found</h2>
+        <hr />
+        <p>
+          <strong>Name:</strong>
+          <span th:text="${client.firstName} + ' ' + ${client.lastName}"></span>
+        </p>
+        <p><strong>Email:</strong> <span th:text="${client.email}"></span></p>
+        <p>
+          <strong>Birth Date:</strong>
+          <span th:text="${client.birthDate}"></span>
+        </p>
+        <p>
+          <strong>Registration Date:</strong>
+          <span th:text="${client.registrationDate}"></span>
+        </p>
+      </div>
+
+      <div
+        th:if="${client == null}"
+        class="alert alert-danger text-center mt-4"
+      >
+        <p th:text="${errorMessage}"></p>
+      </div>
+
+      <div class="text-center mt-4">
+        <a href="/clients/list" class="btn btn-primary">Back to Client List</a>
+      </div>
+    </div>
+
+    <footer th:replace="layouts/layout :: footer"></footer>
+    <script th:replace="layouts/layout :: bootstrap_script"></script>
+  </body>
+</html>

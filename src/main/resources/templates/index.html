@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{layouts/layout :: html_head}" />
+  <body>
+    <header th:replace="layouts/layout :: header"></header>
+    <div class="container">
+      <h1>Welcome to Bemazon</h1>
+      <h5 class="text-danger">
+        La conception est entièrement réalisée par moi. Comme j'ai beaucoup
+        d'expérience en front-end, j'ai utilisé Bootstrap pour le CSS. Je
+        m'excuse car ce n'est pas une conception réactive et n'est pas destinée
+        aux applications mobiles.
+      </h5>
+
+      <h1 class="text-center mt-5 mb-5">Products</h1>
+      <div
+        style="
+          width: 100%;
+          display: flex;
+          justify-content: space-around;
+          align-items: start;
+          flex-wrap: wrap;
+          gap: 20px;
+        "
+      >
+        <div
+          style="max-width: 350px"
+          th:each="product : ${products}"
+          class="card w-100 cards"
+        >
+          <div class="card-body">
+            <h5 class="card-title text-center" th:text="${product.name}"></h5>
+            <img
+              th:src="${product.type == 'Livre' ? 
+            'https://assets-prd.ignimgs.com/2022/04/20/alienwarelaptop-1650471128761.jpg' : 
+            (product.type == 'High Tech' ? 
+              'https://electrotoile.eu/img/logo/high-tech.webp' : 
+            (product.type == 'Bureau' ? 
+              'https://i.ytimg.com/vi/Pl1ea6z2Ijs/maxresdefault.jpg' : 
+              'error'))}"
+              class="card-img-top rounded-4 mt-3"
+              alt="error"
+            />
+
+            <p class="card-text mt-4" th:text="${product.type}"></p>
+            <div class="d-flex justify-content-between">
+              <div class="d-flex justify-content-end">
+                <p>Purchase:&nbsp;</p>
+                <p
+                  class="card-text text-end"
+                  th:text="${product.purchasePrice}"
+                ></p>
+                <p>€</p>
+              </div>
+              <div class="d-flex justify-content-end">
+                <p>Sale:&nbsp;</p>
+                <p
+                  class="card-text text-end"
+                  th:text="${product.purchasePrice + product.salePrice}"
+                ></p>
+                <p>€</p>
+              </div>
+            </div>
+            <p class="text-end">
+              <a
+                href="#"
+                class="btn btn-danger align-self-end"
+                th:href="@{/products/delete/{id}(id=${product.id})}"
+                >Delete</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer th:replace="layouts/layout :: footer"></footer>
+    <script th:replace="layouts/layout :: bootstrap_script"></script>
+  </body>
+</html>

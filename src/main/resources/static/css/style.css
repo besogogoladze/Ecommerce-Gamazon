@@ -1,0 +1,50 @@
+.navigation {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+.navigation ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style-type: none;
+}
+
+.navigation li {
+  margin: 0 10px;
+}
+
+.navigation li a {
+  text-decoration: none;
+  color: black;
+}
+header {
+  margin-bottom: 50px;
+}
+footer {
+  width: 100%;
+  padding: 50px;
+  margin-top: 50px;
+  text-align: center;
+  background-color: rgb(43 48 53);
+  color: #fff;
+}
+.cards {
+  background-color: rgb(43 48 53) !important;
+  color: #fff !important;
+}
+
+::-webkit-scrollbar {
+  width: 50px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(43 48 53);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+  cursor: s-resize;
+}
